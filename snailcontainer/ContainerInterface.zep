@@ -15,7 +15,7 @@ interface ContainerInterface
      *
      * @return mixed Entry.
      */
-    public function get(id);
+    public function get(string id);
     
     
     
@@ -30,6 +30,6 @@ interface ContainerInterface
      *
      * @return boolean
      */
-    public function has(id);
+    public function has(string id) -> boolean;
 }
 
