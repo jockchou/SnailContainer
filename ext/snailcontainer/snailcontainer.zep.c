@@ -147,14 +147,17 @@ PHP_METHOD(SnailContainer_SnailContainer, has) {
 
 PHP_METHOD(SnailContainer_SnailContainer, offsetExists) {
 
-	zval *id, *_0;
+	zval *id_param = NULL, *_0;
+	zval *id = NULL;
 
-	zephir_fetch_params(0, 1, 0, &id);
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &id_param);
 
+	zephir_get_strval(id, id_param);
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("keys"), PH_NOISY_CC);
-	RETURN_BOOL(zephir_array_isset(_0, id));
+	RETURN_MM_BOOL(zephir_array_isset(_0, id));
 
 }
 
@@ -162,11 +165,13 @@ PHP_METHOD(SnailContainer_SnailContainer, offsetGet) {
 
 	zend_bool _5, _9, _12;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *id, *raw = NULL, *val = NULL, *_0, *_4, *_6, *_7, *_8, *_10, *_11, *_13, *_14, *_17, *_18, *_1$$3, _2$$3, *_3$$3 = NULL, *_15$$4, *_16$$4;
+	zval *id_param = NULL, *raw = NULL, *val = NULL, *_0, *_4, *_6, *_7, *_8, *_10, *_11, *_13, *_14, *_17, *_18, *_1$$3, _2$$3, *_3$$3 = NULL, *_15$$4, *_16$$4;
+	zval *id = NULL;
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 1, 0, &id);
+	zephir_fetch_params(1, 1, 0, &id_param);
 
+	zephir_get_strval(id, id_param);
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("keys"), PH_NOISY_CC);
@@ -229,11 +234,13 @@ PHP_METHOD(SnailContainer_SnailContainer, offsetGet) {
 PHP_METHOD(SnailContainer_SnailContainer, offsetSet) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *id, *value, *_0, *_1$$3, _2$$3, *_3$$3 = NULL;
+	zval *id_param = NULL, *value, *_0, *_1$$3, _2$$3, *_3$$3 = NULL;
+	zval *id = NULL;
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 2, 0, &id, &value);
+	zephir_fetch_params(1, 2, 0, &id_param, &value);
 
+	zephir_get_strval(id, id_param);
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("frozen"), PH_NOISY_CC);
@@ -258,10 +265,13 @@ PHP_METHOD(SnailContainer_SnailContainer, offsetSet) {
 
 PHP_METHOD(SnailContainer_SnailContainer, offsetUnset) {
 
-	zval *id, *_0, *_1$$3, *_2$$3, *_9$$3, *_10$$3, *_11$$3, *_12$$3, *_3$$4, *_4$$4, *_5$$4, *_6$$4, *_7$$4, *_8$$4;
+	zval *id_param = NULL, *_0, *_1$$3, *_2$$3, *_9$$3, *_10$$3, *_11$$3, *_12$$3, *_3$$4, *_4$$4, *_5$$4, *_6$$4, *_7$$4, *_8$$4;
+	zval *id = NULL;
 
-	zephir_fetch_params(0, 1, 0, &id);
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &id_param);
 
+	zephir_get_strval(id, id_param);
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("keys"), PH_NOISY_CC);
@@ -287,6 +297,7 @@ PHP_METHOD(SnailContainer_SnailContainer, offsetUnset) {
 		_12$$3 = zephir_fetch_nproperty_this(this_ptr, SL("keys"), PH_NOISY_CC);
 		zephir_array_unset(&_12$$3, id, PH_SEPARATE);
 	}
+	ZEPHIR_MM_RESTORE();
 
 }
 
@@ -337,11 +348,13 @@ PHP_METHOD(SnailContainer_SnailContainer, protect) {
 PHP_METHOD(SnailContainer_SnailContainer, raw) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *id, *_0, *_4, *_7, *_8, *_1$$3, _2$$3, *_3$$3 = NULL, *_5$$4, *_6$$4;
+	zval *id_param = NULL, *_0, *_4, *_7, *_8, *_1$$3, _2$$3, *_3$$3 = NULL, *_5$$4, *_6$$4;
+	zval *id = NULL;
 
 	ZEPHIR_MM_GROW();
-	zephir_fetch_params(1, 1, 0, &id);
+	zephir_fetch_params(1, 1, 0, &id_param);
 
+	zephir_get_strval(id, id_param);
 
 
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("keys"), PH_NOISY_CC);

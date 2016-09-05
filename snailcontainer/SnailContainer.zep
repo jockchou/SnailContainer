@@ -41,13 +41,13 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
     }
     
     
-    public function offsetExists(id) -> boolean
+    public function offsetExists(string id) -> boolean
     {
         return isset this->keys[id];
     }
     
     
-    public function offsetGet(id)
+    public function offsetGet(string id) -> var
     {
         var raw, val;
         
@@ -78,7 +78,7 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
     }
     
     
-    public function offsetSet(id, value) -> void
+    public function offsetSet(string id, var value) -> void
     {
         if isset this->frozen[id] {
             throw new \RuntimeException(sprintf("Cannot override frozen service \"%s\".", id));
@@ -89,7 +89,7 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
     }
     
     
-    public function offsetUnset(id) -> void
+    public function offsetUnset(string id) -> void
     {
     
         if isset this->keys[id] {
@@ -126,7 +126,7 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
     }
     
     
-    public function raw(id)
+    public function raw(string id)
     {
         if !isset(this->keys[id]) {
             throw new \InvalidArgumentException(sprintf("Identifier \"%s\" is not defined.", id));
@@ -138,7 +138,7 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
     }
     
     
-    public function keys()
+    public function keys() -> array
     {
         return array_keys(this->values);
     }
