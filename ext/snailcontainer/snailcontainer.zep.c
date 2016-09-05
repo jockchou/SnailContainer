@@ -17,8 +17,8 @@
 #include "kernel/object.h"
 #include "kernel/hash.h"
 #include "kernel/operators.h"
-#include "kernel/array.h"
 #include "kernel/exception.h"
+#include "kernel/array.h"
 #include "ext/spl/spl_exceptions.h"
 
 
@@ -80,7 +80,7 @@ PHP_METHOD(SnailContainer_SnailContainer, __construct) {
 		zephir_check_call_status();
 	}
 	zephir_update_property_this(this_ptr, SL("protects"), _1 TSRMLS_CC);
-	zephir_is_iterable(values, &_3, &_2, 0, 0, "snailcontainer/SnailContainer.zep", 23);
+	zephir_is_iterable(values, &_3, &_2, 0, 0, "snailcontainer/SnailContainer.zep", 25);
 	for (
 	  ; zephir_hash_get_current_data_ex(_3, (void**) &_4, &_2) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_3, &_2)
@@ -96,7 +96,8 @@ PHP_METHOD(SnailContainer_SnailContainer, __construct) {
 
 PHP_METHOD(SnailContainer_SnailContainer, get) {
 
-	zval *id_param = NULL;
+	int ZEPHIR_LAST_CALL_STATUS;
+	zval *id_param = NULL, *_0 = NULL, *_1$$3, _2$$3, *_3$$3 = NULL;
 	zval *id = NULL;
 
 	ZEPHIR_MM_GROW();
@@ -105,11 +106,30 @@ PHP_METHOD(SnailContainer_SnailContainer, get) {
 	zephir_get_strval(id, id_param);
 
 
+	ZEPHIR_CALL_METHOD(&_0, this_ptr, "offsetexists", NULL, 0, id);
+	zephir_check_call_status();
+	if (!(zephir_is_true(_0))) {
+		ZEPHIR_INIT_VAR(_1$$3);
+		object_init_ex(_1$$3, snailcontainer_exception_containernotfoundexception_ce);
+		ZEPHIR_SINIT_VAR(_2$$3);
+		ZVAL_STRING(&_2$$3, "Identifier \"%s\" is not defined.", 0);
+		ZEPHIR_CALL_FUNCTION(&_3$$3, "sprintf", NULL, 1, &_2$$3, id);
+		zephir_check_call_status();
+		ZEPHIR_CALL_METHOD(NULL, _1$$3, "__construct", NULL, 2, _3$$3);
+		zephir_check_call_status();
+		zephir_throw_exception_debug(_1$$3, "snailcontainer/SnailContainer.zep", 31 TSRMLS_CC);
+		ZEPHIR_MM_RESTORE();
+		return;
+	}
+	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "offsetget", NULL, 0, id);
+	zephir_check_call_status();
+	RETURN_MM();
 
 }
 
 PHP_METHOD(SnailContainer_SnailContainer, has) {
 
+	int ZEPHIR_LAST_CALL_STATUS;
 	zval *id_param = NULL;
 	zval *id = NULL;
 
@@ -119,6 +139,9 @@ PHP_METHOD(SnailContainer_SnailContainer, has) {
 	zephir_get_strval(id, id_param);
 
 
+	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "offsetexists", NULL, 0, id);
+	zephir_check_call_status();
+	RETURN_MM();
 
 }
 
@@ -154,9 +177,9 @@ PHP_METHOD(SnailContainer_SnailContainer, offsetGet) {
 		ZVAL_STRING(&_2$$3, "Identifier \"%s\" is not defined.", 0);
 		ZEPHIR_CALL_FUNCTION(&_3$$3, "sprintf", NULL, 1, &_2$$3, id);
 		zephir_check_call_status();
-		ZEPHIR_CALL_METHOD(NULL, _1$$3, "__construct", NULL, 2, _3$$3);
+		ZEPHIR_CALL_METHOD(NULL, _1$$3, "__construct", NULL, 3, _3$$3);
 		zephir_check_call_status();
-		zephir_throw_exception_debug(_1$$3, "snailcontainer/SnailContainer.zep", 48 TSRMLS_CC);
+		zephir_throw_exception_debug(_1$$3, "snailcontainer/SnailContainer.zep", 55 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
 		return;
 	}
@@ -165,29 +188,29 @@ PHP_METHOD(SnailContainer_SnailContainer, offsetGet) {
 	if (!(_5)) {
 		_6 = zephir_fetch_nproperty_this(this_ptr, SL("protects"), PH_NOISY_CC);
 		_7 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-		zephir_array_fetch(&_8, _7, id, PH_READONLY, "snailcontainer/SnailContainer.zep", 53 TSRMLS_CC);
+		zephir_array_fetch(&_8, _7, id, PH_READONLY, "snailcontainer/SnailContainer.zep", 60 TSRMLS_CC);
 		_5 = zephir_array_isset(_6, _8);
 	}
 	_9 = _5;
 	if (!(_9)) {
 		_10 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-		zephir_array_fetch(&_11, _10, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 54 TSRMLS_CC);
+		zephir_array_fetch(&_11, _10, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 61 TSRMLS_CC);
 		_9 = !(Z_TYPE_P(_11) == IS_OBJECT);
 	}
 	_12 = _9;
 	if (!(_12)) {
 		_13 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-		zephir_array_fetch(&_14, _13, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 55 TSRMLS_CC);
+		zephir_array_fetch(&_14, _13, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 62 TSRMLS_CC);
 		_12 = !((zephir_method_exists_ex(_14, SS("__invoke") TSRMLS_CC) == SUCCESS));
 	}
 	if (_12) {
 		_15$$4 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-		zephir_array_fetch(&_16$$4, _15$$4, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 57 TSRMLS_CC);
+		zephir_array_fetch(&_16$$4, _15$$4, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 64 TSRMLS_CC);
 		RETURN_CTOR(_16$$4);
 	}
 	_17 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
 	ZEPHIR_OBS_VAR(raw);
-	zephir_array_fetch(&raw, _17, id, PH_NOISY, "snailcontainer/SnailContainer.zep", 60 TSRMLS_CC);
+	zephir_array_fetch(&raw, _17, id, PH_NOISY, "snailcontainer/SnailContainer.zep", 67 TSRMLS_CC);
 	_18 = zephir_fetch_nproperty_this(this_ptr, SL("factories"), PH_NOISY_CC);
 	if (zephir_array_isset(_18, raw)) {
 		ZEPHIR_RETURN_CALL_ZVAL_FUNCTION(raw, NULL, 0, this_ptr);
@@ -221,9 +244,9 @@ PHP_METHOD(SnailContainer_SnailContainer, offsetSet) {
 		ZVAL_STRING(&_2$$3, "Cannot override frozen service \"%s\".", 0);
 		ZEPHIR_CALL_FUNCTION(&_3$$3, "sprintf", NULL, 1, &_2$$3, id);
 		zephir_check_call_status();
-		ZEPHIR_CALL_METHOD(NULL, _1$$3, "__construct", NULL, 3, _3$$3);
+		ZEPHIR_CALL_METHOD(NULL, _1$$3, "__construct", NULL, 2, _3$$3);
 		zephir_check_call_status();
-		zephir_throw_exception_debug(_1$$3, "snailcontainer/SnailContainer.zep", 77 TSRMLS_CC);
+		zephir_throw_exception_debug(_1$$3, "snailcontainer/SnailContainer.zep", 84 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
 		return;
 	}
@@ -244,15 +267,15 @@ PHP_METHOD(SnailContainer_SnailContainer, offsetUnset) {
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("keys"), PH_NOISY_CC);
 	if (zephir_array_isset(_0, id)) {
 		_1$$3 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-		zephir_array_fetch(&_2$$3, _1$$3, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 89 TSRMLS_CC);
+		zephir_array_fetch(&_2$$3, _1$$3, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 96 TSRMLS_CC);
 		if (Z_TYPE_P(_2$$3) == IS_OBJECT) {
 			_3$$4 = zephir_fetch_nproperty_this(this_ptr, SL("protects"), PH_NOISY_CC);
 			_4$$4 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-			zephir_array_fetch(&_5$$4, _4$$4, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 90 TSRMLS_CC);
+			zephir_array_fetch(&_5$$4, _4$$4, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 97 TSRMLS_CC);
 			zephir_array_unset(&_3$$4, _5$$4, PH_SEPARATE);
 			_6$$4 = zephir_fetch_nproperty_this(this_ptr, SL("factories"), PH_NOISY_CC);
 			_7$$4 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-			zephir_array_fetch(&_8$$4, _7$$4, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 91 TSRMLS_CC);
+			zephir_array_fetch(&_8$$4, _7$$4, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 98 TSRMLS_CC);
 			zephir_array_unset(&_6$$4, _8$$4, PH_SEPARATE);
 		}
 		_9$$3 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
@@ -278,7 +301,7 @@ PHP_METHOD(SnailContainer_SnailContainer, factory) {
 
 
 	if (!((zephir_method_exists_ex(callback, SS("__invoke") TSRMLS_CC) == SUCCESS))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Service definition is not a Closure or invokable object.", "snailcontainer/SnailContainer.zep", 105);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Service definition is not a Closure or invokable object.", "snailcontainer/SnailContainer.zep", 112);
 		return;
 	}
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("factories"), PH_NOISY_CC);
@@ -300,7 +323,7 @@ PHP_METHOD(SnailContainer_SnailContainer, protect) {
 
 
 	if (!((zephir_method_exists_ex(callback, SS("__invoke") TSRMLS_CC) == SUCCESS))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Service definition is not a Closure or invokable object.", "snailcontainer/SnailContainer.zep", 115);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Service definition is not a Closure or invokable object.", "snailcontainer/SnailContainer.zep", 122);
 		return;
 	}
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("protects"), PH_NOISY_CC);
@@ -329,20 +352,20 @@ PHP_METHOD(SnailContainer_SnailContainer, raw) {
 		ZVAL_STRING(&_2$$3, "Identifier \"%s\" is not defined.", 0);
 		ZEPHIR_CALL_FUNCTION(&_3$$3, "sprintf", NULL, 1, &_2$$3, id);
 		zephir_check_call_status();
-		ZEPHIR_CALL_METHOD(NULL, _1$$3, "__construct", NULL, 2, _3$$3);
+		ZEPHIR_CALL_METHOD(NULL, _1$$3, "__construct", NULL, 3, _3$$3);
 		zephir_check_call_status();
-		zephir_throw_exception_debug(_1$$3, "snailcontainer/SnailContainer.zep", 125 TSRMLS_CC);
+		zephir_throw_exception_debug(_1$$3, "snailcontainer/SnailContainer.zep", 132 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
 		return;
 	}
 	_4 = zephir_fetch_nproperty_this(this_ptr, SL("raw"), PH_NOISY_CC);
 	if (zephir_array_isset(_4, id)) {
 		_5$$4 = zephir_fetch_nproperty_this(this_ptr, SL("raw"), PH_NOISY_CC);
-		zephir_array_fetch(&_6$$4, _5$$4, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 128 TSRMLS_CC);
+		zephir_array_fetch(&_6$$4, _5$$4, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 135 TSRMLS_CC);
 		RETURN_CTOR(_6$$4);
 	}
 	_7 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-	zephir_array_fetch(&_8, _7, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 130 TSRMLS_CC);
+	zephir_array_fetch(&_8, _7, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 137 TSRMLS_CC);
 	RETURN_CTOR(_8);
 
 }
@@ -380,7 +403,7 @@ PHP_METHOD(SnailContainer_SnailContainer, register) {
 
 	ZEPHIR_CALL_METHOD(NULL, provider, "register", NULL, 0, this_ptr);
 	zephir_check_call_status();
-	zephir_is_iterable(values, &_1, &_0, 0, 0, "snailcontainer/SnailContainer.zep", 150);
+	zephir_is_iterable(values, &_1, &_0, 0, 0, "snailcontainer/SnailContainer.zep", 157);
 	for (
 	  ; zephir_hash_get_current_data_ex(_1, (void**) &_2, &_0) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_1, &_0)

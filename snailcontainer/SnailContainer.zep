@@ -1,5 +1,7 @@
 namespace SnailContainer;
 
+use SnailContainer\Exception\ContainerNotFoundException;
+
 class SnailContainer implements \ArrayAccess, ContainerInterface
 {
     private values = [];
@@ -25,12 +27,17 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
     public function get(string id)
     {
     
+        if !$this->offsetExists(id) {
+            throw new ContainerNotFoundException(sprintf("Identifier \"%s\" is not defined.", id));
+        }
+        
+        return this->offsetGet(id);
     }
     
     
     public function has(string id) -> boolean
     {
-    
+        return this->offsetExists(id);
     }
     
     

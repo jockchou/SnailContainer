@@ -1,5 +1,0 @@
-
-extern zend_class_entry *snailcontainer_exception_notfoundexception_ce;
-
-ZEPHIR_INIT_CLASS(SnailContainer_Exception_NotFoundException);
-
