@@ -33,18 +33,15 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
         return this->offsetGet(id);
     }
     
-    
     public function has(string id) -> boolean
     {
         return this->offsetExists(id);
     }
     
-    
     public function offsetExists(string id) -> boolean
     {
         return isset this->keys[id];
     }
-    
     
     public function offsetGet(string id) -> var
     {
@@ -76,7 +73,6 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
         return val;
     }
     
-    
     public function offsetSet(string id, var value) -> void
     {
         if isset this->frozen[id] {
@@ -86,7 +82,6 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
         let this->values[id] = value;
         let this->keys[id] = true;
     }
-    
     
     public function offsetUnset(string id) -> void
     {
@@ -104,7 +99,6 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
         }
     }
     
-    
     public function factory(callable callback) -> callable
     {
         if !method_exists(callback, "__invoke") {
@@ -114,7 +108,6 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
         return callback;
     }
     
-    
     public function protect(callable callback)
     {
         if !method_exists(callback, "__invoke") {
@@ -123,7 +116,6 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
         this->protects->attach(callback);
         return callback;
     }
-    
     
     public function raw(string id)
     {
@@ -136,13 +128,11 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
         return this->values[id];
     }
     
-    
     public function keys() -> array
     {
         return array_keys(this->values);
     }
 
-    
     public function register(<ServiceProviderInterface> provider, array values = []) -> <SnailContainer>
     {
         var key, val;
