@@ -137,9 +137,9 @@ PHP_METHOD(SnailContainer_SnailContainer, offsetExists) {
 
 PHP_METHOD(SnailContainer_SnailContainer, offsetGet) {
 
-	zend_bool _5, _8, _12;
+	zend_bool _5, _9, _12;
 	int ZEPHIR_LAST_CALL_STATUS;
-	zval *id, *raw = NULL, *val = NULL, *_0, *_4, *_6, *_7, *_9, *_10, *_11, *_13, *_14, *_17, *_18, *_19 = NULL, *_20, *_1$$3, _2$$3, *_3$$3 = NULL, *_15$$4, *_16$$4;
+	zval *id, *raw = NULL, *val = NULL, *_0, *_4, *_6, *_7, *_8, *_10, *_11, *_13, *_14, *_17, *_18, *_1$$3, _2$$3, *_3$$3 = NULL, *_15$$4, *_16$$4;
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &id);
@@ -163,18 +163,18 @@ PHP_METHOD(SnailContainer_SnailContainer, offsetGet) {
 	_4 = zephir_fetch_nproperty_this(this_ptr, SL("raw"), PH_NOISY_CC);
 	_5 = zephir_array_isset(_4, id);
 	if (!(_5)) {
-		_6 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-		zephir_array_fetch(&_7, _6, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 53 TSRMLS_CC);
-		_5 = !(Z_TYPE_P(_7) == IS_OBJECT);
+		_6 = zephir_fetch_nproperty_this(this_ptr, SL("protects"), PH_NOISY_CC);
+		_7 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
+		zephir_array_fetch(&_8, _7, id, PH_READONLY, "snailcontainer/SnailContainer.zep", 53 TSRMLS_CC);
+		_5 = zephir_array_isset(_6, _8);
 	}
-	_8 = _5;
-	if (!(_8)) {
-		_9 = zephir_fetch_nproperty_this(this_ptr, SL("protects"), PH_NOISY_CC);
+	_9 = _5;
+	if (!(_9)) {
 		_10 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-		zephir_array_fetch(&_11, _10, id, PH_READONLY, "snailcontainer/SnailContainer.zep", 54 TSRMLS_CC);
-		_8 = zephir_array_isset(_9, _11);
+		zephir_array_fetch(&_11, _10, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 54 TSRMLS_CC);
+		_9 = !(Z_TYPE_P(_11) == IS_OBJECT);
 	}
-	_12 = _8;
+	_12 = _9;
 	if (!(_12)) {
 		_13 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
 		zephir_array_fetch(&_14, _13, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 55 TSRMLS_CC);
@@ -194,14 +194,12 @@ PHP_METHOD(SnailContainer_SnailContainer, offsetGet) {
 		zephir_check_call_status();
 		RETURN_MM();
 	}
-	ZEPHIR_CALL_ZVAL_FUNCTION(&_19, raw, NULL, 0, this_ptr);
+	ZEPHIR_CALL_ZVAL_FUNCTION(&val, raw, NULL, 0, this_ptr);
 	zephir_check_call_status();
-	zephir_update_property_array(this_ptr, SL("values"), id, _19 TSRMLS_CC);
-	_20 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-	zephir_array_fetch(&val, _20, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 68 TSRMLS_CC);
+	zephir_update_property_array(this_ptr, SL("values"), id, val TSRMLS_CC);
 	zephir_update_property_array(this_ptr, SL("raw"), id, raw TSRMLS_CC);
 	zephir_update_property_array(this_ptr, SL("frozen"), id, ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
-	RETURN_CTOR(val);
+	RETURN_CCTOR(val);
 
 }
 
@@ -225,7 +223,7 @@ PHP_METHOD(SnailContainer_SnailContainer, offsetSet) {
 		zephir_check_call_status();
 		ZEPHIR_CALL_METHOD(NULL, _1$$3, "__construct", NULL, 3, _3$$3);
 		zephir_check_call_status();
-		zephir_throw_exception_debug(_1$$3, "snailcontainer/SnailContainer.zep", 79 TSRMLS_CC);
+		zephir_throw_exception_debug(_1$$3, "snailcontainer/SnailContainer.zep", 77 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
 		return;
 	}
@@ -246,15 +244,15 @@ PHP_METHOD(SnailContainer_SnailContainer, offsetUnset) {
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("keys"), PH_NOISY_CC);
 	if (zephir_array_isset(_0, id)) {
 		_1$$3 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-		zephir_array_fetch(&_2$$3, _1$$3, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 91 TSRMLS_CC);
+		zephir_array_fetch(&_2$$3, _1$$3, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 89 TSRMLS_CC);
 		if (Z_TYPE_P(_2$$3) == IS_OBJECT) {
 			_3$$4 = zephir_fetch_nproperty_this(this_ptr, SL("protects"), PH_NOISY_CC);
 			_4$$4 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-			zephir_array_fetch(&_5$$4, _4$$4, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 92 TSRMLS_CC);
+			zephir_array_fetch(&_5$$4, _4$$4, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 90 TSRMLS_CC);
 			zephir_array_unset(&_3$$4, _5$$4, PH_SEPARATE);
 			_6$$4 = zephir_fetch_nproperty_this(this_ptr, SL("factories"), PH_NOISY_CC);
 			_7$$4 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-			zephir_array_fetch(&_8$$4, _7$$4, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 93 TSRMLS_CC);
+			zephir_array_fetch(&_8$$4, _7$$4, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 91 TSRMLS_CC);
 			zephir_array_unset(&_6$$4, _8$$4, PH_SEPARATE);
 		}
 		_9$$3 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
@@ -280,7 +278,7 @@ PHP_METHOD(SnailContainer_SnailContainer, factory) {
 
 
 	if (!((zephir_method_exists_ex(callback, SS("__invoke") TSRMLS_CC) == SUCCESS))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Service definition is not a Closure or invokable object.", "snailcontainer/SnailContainer.zep", 107);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Service definition is not a Closure or invokable object.", "snailcontainer/SnailContainer.zep", 105);
 		return;
 	}
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("factories"), PH_NOISY_CC);
@@ -302,7 +300,7 @@ PHP_METHOD(SnailContainer_SnailContainer, protect) {
 
 
 	if (!((zephir_method_exists_ex(callback, SS("__invoke") TSRMLS_CC) == SUCCESS))) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Service definition is not a Closure or invokable object.", "snailcontainer/SnailContainer.zep", 117);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(spl_ce_InvalidArgumentException, "Service definition is not a Closure or invokable object.", "snailcontainer/SnailContainer.zep", 115);
 		return;
 	}
 	_0 = zephir_fetch_nproperty_this(this_ptr, SL("protects"), PH_NOISY_CC);
@@ -333,18 +331,18 @@ PHP_METHOD(SnailContainer_SnailContainer, raw) {
 		zephir_check_call_status();
 		ZEPHIR_CALL_METHOD(NULL, _1$$3, "__construct", NULL, 2, _3$$3);
 		zephir_check_call_status();
-		zephir_throw_exception_debug(_1$$3, "snailcontainer/SnailContainer.zep", 127 TSRMLS_CC);
+		zephir_throw_exception_debug(_1$$3, "snailcontainer/SnailContainer.zep", 125 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
 		return;
 	}
 	_4 = zephir_fetch_nproperty_this(this_ptr, SL("raw"), PH_NOISY_CC);
 	if (zephir_array_isset(_4, id)) {
 		_5$$4 = zephir_fetch_nproperty_this(this_ptr, SL("raw"), PH_NOISY_CC);
-		zephir_array_fetch(&_6$$4, _5$$4, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 130 TSRMLS_CC);
+		zephir_array_fetch(&_6$$4, _5$$4, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 128 TSRMLS_CC);
 		RETURN_CTOR(_6$$4);
 	}
 	_7 = zephir_fetch_nproperty_this(this_ptr, SL("values"), PH_NOISY_CC);
-	zephir_array_fetch(&_8, _7, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 132 TSRMLS_CC);
+	zephir_array_fetch(&_8, _7, id, PH_NOISY | PH_READONLY, "snailcontainer/SnailContainer.zep", 130 TSRMLS_CC);
 	RETURN_CTOR(_8);
 
 }
@@ -382,7 +380,7 @@ PHP_METHOD(SnailContainer_SnailContainer, register) {
 
 	ZEPHIR_CALL_METHOD(NULL, provider, "register", NULL, 0, this_ptr);
 	zephir_check_call_status();
-	zephir_is_iterable(values, &_1, &_0, 0, 0, "snailcontainer/SnailContainer.zep", 153);
+	zephir_is_iterable(values, &_1, &_0, 0, 0, "snailcontainer/SnailContainer.zep", 150);
 	for (
 	  ; zephir_hash_get_current_data_ex(_1, (void**) &_2, &_0) == SUCCESS
 	  ; zephir_hash_move_forward_ex(_1, &_0)

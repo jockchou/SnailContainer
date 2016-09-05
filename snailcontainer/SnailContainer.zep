@@ -50,8 +50,8 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
         
         if (
             isset this->raw[id]
-            || !is_object(this->values[id])
             || isset this->protects[this->values[id]]
+            || !is_object(this->values[id])
             || !method_exists(this->values[id], "__invoke")
         ) {
             return this->values[id];
@@ -63,13 +63,11 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
             return {raw}(this);
         }
         
-        
-        let this->values[id] = {raw}(this);
-        let val = this->values[id];
+        let val = {raw}(this);
+        let this->values[id] = val;
         let this->raw[id] = raw;
         let this->frozen[id] = true;
         return val;
-    
     }
     
     
@@ -146,7 +144,6 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
         provider->register(this);
        
         for key, val in values {
-            //let this[key] = val;
             this->offsetSet(key, val);
         }
         
