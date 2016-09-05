@@ -18,7 +18,6 @@ class SnailContainer implements \ArrayAccess, ContainerInterface
         let this->factories = new \SplObjectStorage();
         let this->protects = new \SplObjectStorage();
         
-        
         for key, val in values {
             this->offsetSet(key, val);
         }
