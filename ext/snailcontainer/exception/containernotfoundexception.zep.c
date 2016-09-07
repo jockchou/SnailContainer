@@ -22,7 +22,7 @@ ZEPHIR_INIT_CLASS(SnailContainer_Exception_ContainerNotFoundException) {
 
 	ZEPHIR_REGISTER_CLASS_EX(SnailContainer\\Exception, ContainerNotFoundException, snailcontainer, exception_containernotfoundexception, spl_ce_RuntimeException, NULL, 0);
 
-	zend_class_implements(snailcontainer_exception_containernotfoundexception_ce TSRMLS_CC, 1, snailcontainer_exception_containerexception_ce);
+	zend_class_implements(snailcontainer_exception_containernotfoundexception_ce TSRMLS_CC, 1, zephir_get_internal_ce(SS("psr\\container\\exception\\notfoundexceptioninterface") TSRMLS_CC));
 	return SUCCESS;
 
 }

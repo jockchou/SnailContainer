@@ -1,6 +1,8 @@
 namespace SnailContainer;
 
+use Psr\Container\ContainerInterface;
 use SnailContainer\Exception\ContainerNotFoundException;
+
 
 class SnailContainer implements \ArrayAccess, ContainerInterface
 {

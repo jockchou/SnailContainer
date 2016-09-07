@@ -27,8 +27,6 @@
 
 
 
-zend_class_entry *snailcontainer_containerinterface_ce;
-zend_class_entry *snailcontainer_exception_containerexception_ce;
 zend_class_entry *snailcontainer_serviceproviderinterface_ce;
 zend_class_entry *snailcontainer_exception_containernotfoundexception_ce;
 zend_class_entry *snailcontainer_snailcontainer_ce;
@@ -57,8 +55,6 @@ static PHP_MINIT_FUNCTION(snailcontainer)
 	setlocale(LC_ALL, "C");
 #endif
 	REGISTER_INI_ENTRIES();
-	ZEPHIR_INIT(SnailContainer_ContainerInterface);
-	ZEPHIR_INIT(SnailContainer_Exception_ContainerException);
 	ZEPHIR_INIT(SnailContainer_ServiceProviderInterface);
 	ZEPHIR_INIT(SnailContainer_Exception_ContainerNotFoundException);
 	ZEPHIR_INIT(SnailContainer_SnailContainer);
